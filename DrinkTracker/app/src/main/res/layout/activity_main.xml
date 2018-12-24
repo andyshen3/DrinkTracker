@@ -8,86 +8,81 @@
 
     <TextView
         android:id="@+id/welcomeText"
-        android:layout_width="339dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="50dp"
         android:text="Welcome to DrinkTracker!"
         android:textSize="28dp" />
 
     <TextView
         android:id="@+id/informationText"
-        android:layout_width="209dp"
-        android:layout_height="59dp"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/welcomeText"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="-100dp"
-        android:layout_marginRight="-100dp"
-        android:layout_toStartOf="@+id/checkBoxFemale"
-        android:layout_toLeftOf="@+id/checkBoxFemale"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
         android:text="Please fill in the following information:"
         android:textSize="16dp" />
 
     <EditText
         android:id="@+id/userName"
-        android:layout_width="208dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
         android:imeOptions="actionDone"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="89dp"
-        android:layout_marginLeft="89dp"
-        android:layout_marginTop="220dp"
         android:layout_below="@id/informationText"
+        android:ems="10"
         android:hint="Name"
+        android:layout_alignStart="@id/informationText"
         android:inputType="textPersonName" />
 
-    <CheckBox
-        android:id="@+id/checkBoxMale"
-        android:layout_width="89dp"
+    <RadioGroup
+        android:id="@+id/genderSelect"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/userName"
-        android:layout_alignStart="@+id/userName"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="325dp"
-        android:text="Male" />
+        android:layout_marginTop="30dp"
+        android:layout_alignStart="@id/userName" >
 
-    <CheckBox
-        android:id="@+id/checkBoxFemale"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/userName"
-        android:layout_alignBottom="@+id/checkBoxMale"
-        android:layout_marginEnd="-3dp"
-        android:layout_marginBottom="0dp"
-        android:text="Female" />
+        <RadioButton
+            android:id="@+id/checkBoxMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/checkBoxFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+
+    </RadioGroup>
 
     <EditText
         android:id="@+id/weightInput"
-        android:layout_width="212dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/userName"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginBottom="156dp"
+        android:layout_alignEnd="@id/userName"
+        android:layout_below="@id/genderSelect"
         android:imeOptions="actionDone"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Weight"
         android:inputType="number" />
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/welcomeText"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="24dp"
         android:text="Confirm"
-        android:onClick="goToHomePage" />
+        android:onClick="hitConfirm" />
 
 
 </RelativeLayout>
