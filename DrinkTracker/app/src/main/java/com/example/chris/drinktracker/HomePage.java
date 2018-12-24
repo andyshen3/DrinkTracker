@@ -5,21 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home_page);
     }
 
-    public void goToHomePage(View view) {
-        Intent intent = new Intent(this, HomePage.class);
+    public void goToSettings(View view) {
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
-    }
-
-    public void sendMessage(View view)
-    {
-
     }
 }
