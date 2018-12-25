@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("username", usernameValue);
         editor.putString("gender", genderButton.getText().toString());
         editor.putFloat("weight", weightValue);
+        editor.apply();
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
