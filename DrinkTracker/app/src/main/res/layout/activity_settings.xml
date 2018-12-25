@@ -29,6 +29,28 @@
         android:inputType="textPersonName"
         android:text="Name" />
 
+    <RadioGroup
+        android:id="@+id/genderSelectSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="206dp"
+        android:layout_alignStart="@id/nameField" >
+
+        <RadioButton
+            android:id="@+id/maleRadioSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/femaleRadioSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+
+    </RadioGroup>
+
     <EditText
         android:id="@+id/weightField"
         android:layout_width="wrap_content"
@@ -38,26 +60,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginBottom="278dp"
         android:ems="10"
-        android:inputType="textPersonName|number"
+        android:inputType="number"
         android:text="Weight" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="82dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/nameField"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="206dp"
-        android:text="Male" />
-
-    <CheckBox
-        android:id="@+id/femaleCheckBox"
-        android:layout_width="99dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/checkBox"
-        android:layout_alignEnd="@+id/nameField"
-        android:layout_marginTop="0dp"
-        android:text="Female" />
 
     <Button
         android:id="@+id/confirmButton"

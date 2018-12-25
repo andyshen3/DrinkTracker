@@ -2,8 +2,10 @@ package com.example.chris.drinktracker;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -32,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         }
         RadioGroup genderGroup = (RadioGroup) findViewById(R.id.genderSelect);
         RadioButton genderButton = (RadioButton) findViewById(genderGroup.getCheckedRadioButtonId());
-        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("username", usernameValue);
         editor.putString("gender", genderButton.getText().toString());
         editor.putFloat("weight", weightValue);
