@@ -25,6 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="102dp"
+        android:imeOptions="actionDone"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name" />
@@ -59,6 +60,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="278dp"
+        android:imeOptions="actionDone"
         android:ems="10"
         android:inputType="number"
         android:text="Weight" />

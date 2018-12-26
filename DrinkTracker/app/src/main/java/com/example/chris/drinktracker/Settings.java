@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
 
@@ -45,12 +46,17 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view)
             {
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("username", userField.getText().toString());
-                editor.putString("gender", genderButton.getText().toString());
-                editor.putFloat("weight", Float.valueOf(weightField.getText().toString()));
-                editor.apply();
-                Intent intent = new Intent(context, HomePage.class);
-                startActivity(intent);
+                if (userField.getText().toString().equals("") || weightField.getText().toString().equals("")) {
+                    Toast.makeText(context, "Please complete the above information.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    editor.putString("username", userField.getText().toString());
+                    editor.putString("gender", genderButton.getText().toString());
+                    editor.putFloat("weight", Float.valueOf(weightField.getText().toString()));
+                    editor.apply();
+                    Intent intent = new Intent(context, HomePage.class);
+                    startActivity(intent);
+                }
             }
         });
     }
