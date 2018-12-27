@@ -62,7 +62,7 @@
         android:layout_marginBottom="278dp"
         android:ems="10"
         android:imeOptions="actionDone"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:text="Weight" />
 
     <Button
