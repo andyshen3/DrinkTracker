@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="drink_prompt">Units of Drink</string>
+
+    <string-array name="drink_units">
+        <item>Shot</item>
+        <item>Can</item>
+        <item>Bottle</item>
+        <item>Fifth</item>
+        <item>Handle</item>
+    </string-array>
+
+</resources>

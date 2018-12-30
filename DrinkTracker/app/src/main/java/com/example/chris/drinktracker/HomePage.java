@@ -37,6 +37,11 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToAddDrink(View view) {
+        Intent intent = new Intent(this, AddDrink.class);
+        startActivity(intent);
+    }
+
     /**Widmark Formula: %BAC = (A x 5.14 / (W x r)) - .015 x H
      * A = liquid ounces of alcohol consumed
      * W = weight in pounds
