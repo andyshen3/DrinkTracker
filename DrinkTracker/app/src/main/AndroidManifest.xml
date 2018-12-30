@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Settings" />
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".HomePage" />
+        <activity android:name=".AddDrink"></activity>
     </application>
 
 </manifest>

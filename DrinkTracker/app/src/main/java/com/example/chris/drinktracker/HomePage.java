@@ -25,7 +25,7 @@ public class HomePage extends AppCompatActivity {
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circle);
         final ProgressBar progBar = (ProgressBar) findViewById(R.id.circularProgressbar);
-        progBar.setProgress(0);
+        progBar.setProgress(1);
         //Set Max as the max BAC for the user, default to 100 for now
         progBar.setMax(100);
         progBar.setProgressDrawable(drawable);
@@ -35,6 +35,24 @@ public class HomePage extends AppCompatActivity {
     public void goToSettings(View view) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
+    }
+
+    /**Widmark Formula: %BAC = (A x 5.14 / (W x r)) - .015 x H
+     * A = liquid ounces of alcohol consumed
+     * W = weight in pounds
+     * r = gender constant (0.73 for men, 0.66 for women)
+     * H = hours since first drink
+    */
+    public int calculateBAC(double A, int W, int r, double H)
+    {
+        return 0;
+    }
+
+    public double getAlcLiquidOunces(double percentAlc)
+    {
+        double volume = 0;
+
+        return Math.round(percentAlc * volume) ;
     }
 
 }
