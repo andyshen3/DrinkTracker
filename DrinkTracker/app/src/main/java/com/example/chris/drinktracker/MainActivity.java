@@ -13,7 +13,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.chris.drinktracker.db.AlcoholWebScraper;
 import com.example.chris.drinktracker.db.AppDatabase;
 import com.example.chris.drinktracker.db.DrinkEntity;
 
@@ -70,11 +69,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HomePage.class);
             startActivity(intent);
         }
-    }
-    public void sendMessage(View view)
-    {
 
+        System.out.println(DRINKMAP.keySet());
     }
+
 
     private static class DrinkNamesAsyncTask extends AsyncTask<Void, Void, DrinkEntity[]> {
 

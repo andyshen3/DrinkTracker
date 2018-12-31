@@ -36,16 +36,10 @@ public class AddDrink extends AppCompatActivity {
         EditText alcoholQuantityET = (EditText) findViewById(R.id.alcoholQuantity);
         String alcoholQuantity = alcoholQuantityET.getText().toString();
 
-        System.out.println(alcoholName);
-        System.out.println(alcoholUnit);
-        System.out.println(alcoholQuantity);
-
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("alcoholName", alcoholName);
         editor.putString("alcoholUnit", alcoholUnit);
         editor.putString("alcoholQuantity", alcoholQuantity);
-
-        System.out.println(getAlcLiquidOunces());
     }
 
     /**Widmark Formula: %BAC = (A x 5.14 / (W x r)) - .015 x H
@@ -53,24 +47,59 @@ public class AddDrink extends AppCompatActivity {
      * W = weight in pounds
      * r = gender constant (0.73 for men, 0.66 for women)
      * H = hours since first drink
+     *
+     * Method does not account for BAC decay yet
      */
-    public int calculateBAC(double A, int W, int r, double H)
+    public double calculateBAC()
     {
-        //TODO: Finish helper functions to calculate
-        return 0;
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Float weight = prefs.getFloat("weight", 0f);
+        String gender = prefs.getString("gender", null);
+        double genderConstant;
+
+        switch(gender){
+            case "Male":
+                genderConstant = 0.73;
+                break;
+
+            case "Female":
+                genderConstant = 0.66;
+                break;
+
+            default:
+                genderConstant = 0;
+
+        }
+
+        return (getAlcLiquidOunces() * 5.14) / (weight * genderConstant);
     }
 
+    /**
+     * Calculates the amount of liquid ounces of alcohol consumed by multiplying the volume of
+     * alcohol, percent alcohol of the drink, and the quantity of the drink consumed.
+     * 
+     * @return liquid ounces of alcohol consumed
+     */
     public double getAlcLiquidOunces()
     {
         double volume;
-        double percentAlc = 10;
+        double percentAlc;
+        double alcoholQuantity;
+
+        EditText alcoholNameET = (EditText) findViewById(R.id.alcoholName);
+        String alcoholName = alcoholNameET.getText().toString();
 
         Spinner alcoholUnitSP = (Spinner) findViewById(R.id.alcohol_spinner);
         String alcoholUnit = alcoholUnitSP.getSelectedItem().toString();
 
         EditText alcoholQuantityET = (EditText) findViewById(R.id.alcoholQuantity);
         String alcoholQuantityString = alcoholQuantityET.getText().toString();
-        double alcoholQuantity = Double.parseDouble(alcoholQuantityString);
+
+        alcoholQuantity = Double.parseDouble(alcoholQuantityString);
+        percentAlc = MainActivity.DRINKMAP.get(alcoholName);
+
+        //Convert to a decimal
+        percentAlc = percentAlc / 100.0;
 
         switch(alcoholUnit){
             case "Shot":
@@ -98,6 +127,6 @@ public class AddDrink extends AppCompatActivity {
                 break;
         }
 
-        return Math.round(percentAlc * volume * alcoholQuantity) ;
+        return (percentAlc * volume * alcoholQuantity);
     }
 }
