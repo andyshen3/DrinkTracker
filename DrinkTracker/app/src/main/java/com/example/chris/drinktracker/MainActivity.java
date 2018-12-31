@@ -2,6 +2,7 @@ package com.example.chris.drinktracker;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +13,33 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.chris.drinktracker.db.AlcoholWebScraper;
+import com.example.chris.drinktracker.db.AppDatabase;
+import com.example.chris.drinktracker.db.DrinkEntity;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static final Map<String, Float> DRINKMAP = new HashMap<>();
 
     private SharedPreferences sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DrinkNamesAsyncTask task = new DrinkNamesAsyncTask(AppDatabase.getAppDatabase(getApplicationContext()));
+        try {
+            DrinkEntity[] result = task.execute().get();
+            for (DrinkEntity drink : result) {
+                DRINKMAP.put(drink.getAlcohol(), drink.getPercentage());
+            }
+        } catch (java.lang.InterruptedException e) {
+            Log.d("EXCEPTION", "InterruptedException " + e.getMessage());
+        } catch(java.util.concurrent.ExecutionException e) {
+            Log.d("EXCEPTION", "ExecutionException " + e.getMessage());
+        }
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (sharedPrefs.getString("username", null) != null) {
             Intent intent = new Intent(this, HomePage.class);
@@ -54,5 +75,19 @@ public class MainActivity extends AppCompatActivity {
     public void sendMessage(View view)
     {
 
+    }
+
+    private static class DrinkNamesAsyncTask extends AsyncTask<Void, Void, DrinkEntity[]> {
+
+        private final AppDatabase db;
+
+        public DrinkNamesAsyncTask(AppDatabase db) {
+            this.db = db;
+        }
+
+        @Override
+        protected DrinkEntity[] doInBackground(Void... params) {
+            return db.alcoholDAO().loadAllDrinks();
+        }
     }
 }
