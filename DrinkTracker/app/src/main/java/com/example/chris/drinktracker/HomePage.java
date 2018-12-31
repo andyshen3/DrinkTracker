@@ -25,7 +25,7 @@ public class HomePage extends AppCompatActivity {
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circle);
         final ProgressBar progBar = (ProgressBar) findViewById(R.id.circularProgressbar);
-        progBar.setProgress(0);
+        progBar.setProgress(1);
         //Set Max as the max BAC for the user, default to 100 for now
         progBar.setMax(100);
         progBar.setProgressDrawable(drawable);
@@ -36,5 +36,12 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
+
+    public void goToAddDrink(View view) {
+        Intent intent = new Intent(this, AddDrink.class);
+        startActivity(intent);
+    }
+
+
 
 }
