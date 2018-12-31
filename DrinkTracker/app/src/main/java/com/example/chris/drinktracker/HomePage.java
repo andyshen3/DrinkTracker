@@ -42,22 +42,6 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /**Widmark Formula: %BAC = (A x 5.14 / (W x r)) - .015 x H
-     * A = liquid ounces of alcohol consumed
-     * W = weight in pounds
-     * r = gender constant (0.73 for men, 0.66 for women)
-     * H = hours since first drink
-    */
-    public int calculateBAC(double A, int W, int r, double H)
-    {
-        return 0;
-    }
 
-    public double getAlcLiquidOunces(double percentAlc)
-    {
-        double volume = 0;
-
-        return Math.round(percentAlc * volume) ;
-    }
 
 }
