@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 public class HomePage extends AppCompatActivity {
 
+    public static int BACRatio = 0;
+    public static double BAC = 0.00;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +28,13 @@ public class HomePage extends AppCompatActivity {
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circle);
         final ProgressBar progBar = (ProgressBar) findViewById(R.id.circularProgressbar);
-        progBar.setProgress(1);
+        progBar.setProgress(BACRatio);
         //Set Max as the max BAC for the user, default to 100 for now
         progBar.setMax(100);
         progBar.setProgressDrawable(drawable);
+
+        TextView progValueTV = (TextView) findViewById(R.id.tv);
+        progValueTV.setText(String.valueOf(BAC));
 
     }
 

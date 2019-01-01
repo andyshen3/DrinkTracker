@@ -40,6 +40,16 @@ public class AddDrink extends AppCompatActivity {
         editor.putString("alcoholName", alcoholName);
         editor.putString("alcoholUnit", alcoholUnit);
         editor.putString("alcoholQuantity", alcoholQuantity);
+
+        System.out.println("INCREASED: " + calculateBAC());
+        System.out.println("ORIGINAL BAC: " + HomePage.BACRatio);
+        HomePage.BACRatio += (int) ((calculateBAC()) * 200);
+        HomePage.BAC += calculateBAC();
+
+        System.out.println("BAC: " + HomePage.BAC);
+
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
     }
 
     /**Widmark Formula: %BAC = (A x 5.14 / (W x r)) - .015 x H
@@ -77,7 +87,7 @@ public class AddDrink extends AppCompatActivity {
     /**
      * Calculates the amount of liquid ounces of alcohol consumed by multiplying the volume of
      * alcohol, percent alcohol of the drink, and the quantity of the drink consumed.
-     * 
+     *
      * @return liquid ounces of alcohol consumed
      */
     public double getAlcLiquidOunces()
