@@ -43,8 +43,8 @@ public class AddDrink extends AppCompatActivity {
 
         System.out.println("INCREASED: " + calculateBAC());
         System.out.println("ORIGINAL BAC: " + HomePage.BACRatio);
-        HomePage.BACRatio += (int) ((calculateBAC()) * 200);
-        HomePage.BAC += calculateBAC();
+        HomePage.BACRatio += (int) ((truncateBAC(calculateBAC())) * 200);
+        HomePage.BAC += truncateBAC(calculateBAC());
 
         System.out.println("BAC: " + HomePage.BAC);
 
@@ -138,5 +138,9 @@ public class AddDrink extends AppCompatActivity {
         }
 
         return (percentAlc * volume * alcoholQuantity);
+    }
+
+    public double truncateBAC(double BAC){
+        return Math.floor(BAC * 1000) / 1000;
     }
 }
