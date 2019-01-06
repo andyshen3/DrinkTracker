@@ -78,6 +78,48 @@
         app:srcCompat="@drawable/ic_add"
         android:onClick="goToAddDrink"/>
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <TableLayout
+            android:id="@+id/tableHeader"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="180dp"
+            android:gravity="center_horizontal">
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="My Drinks"
+                    android:textSize="28sp" />
+
+                ]
+            </TableRow>
+
+
+
+
+
+
+
+
+        </TableLayout>
+    </ScrollView>
+
 
 
 

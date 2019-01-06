@@ -41,11 +41,12 @@ public class AddDrink extends AppCompatActivity {
         editor.putString("alcoholUnit", alcoholUnit);
         editor.putString("alcoholQuantity", alcoholQuantity);
 
-        System.out.println("INCREASED: " + calculateBAC());
+        System.out.println("INCREASED: " + truncateBAC(calculateBAC()));
         System.out.println("ORIGINAL BAC: " + HomePage.BACRatio);
-        HomePage.BACRatio += (int) ((truncateBAC(calculateBAC())) * 200);
+        HomePage.BACRatio += ((truncateBAC(calculateBAC())) * 200);
         HomePage.BAC += truncateBAC(calculateBAC());
 
+        System.out.println("BAC RATIO: " + ((truncateBAC(calculateBAC())) * 200));
         System.out.println("BAC: " + HomePage.BAC);
 
         Intent intent = new Intent(this, HomePage.class);
