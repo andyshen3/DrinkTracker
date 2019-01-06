@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -19,6 +22,12 @@ public class AddDrink extends AppCompatActivity {
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         setContentView(R.layout.activity_add_drink);
+        String[] drinks = (String[]) MainActivity.DRINKMAP.keySet().toArray(new String[0]);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, drinks);
+        AutoCompleteTextView autoCompleteAlcName = (AutoCompleteTextView) findViewById(R.id.autoCompleteAlcoholName);
+        autoCompleteAlcName.setThreshold(1);
+        autoCompleteAlcName.setAdapter(adapter);
     }
 
     public void goToHomePage(View view) {
@@ -27,7 +36,7 @@ public class AddDrink extends AppCompatActivity {
     }
 
     public void addDrink(View view){
-        EditText alcoholNameET = (EditText) findViewById(R.id.alcoholName);
+        AutoCompleteTextView alcoholNameET = (AutoCompleteTextView) findViewById(R.id.autoCompleteAlcoholName);
         String alcoholName = alcoholNameET.getText().toString();
 
         Spinner alcoholUnitSP = (Spinner) findViewById(R.id.alcohol_spinner);
@@ -97,7 +106,7 @@ public class AddDrink extends AppCompatActivity {
         double percentAlc;
         double alcoholQuantity;
 
-        EditText alcoholNameET = (EditText) findViewById(R.id.alcoholName);
+        AutoCompleteTextView alcoholNameET = (AutoCompleteTextView) findViewById(R.id.autoCompleteAlcoholName);
         String alcoholName = alcoholNameET.getText().toString();
 
         Spinner alcoholUnitSP = (Spinner) findViewById(R.id.alcohol_spinner);

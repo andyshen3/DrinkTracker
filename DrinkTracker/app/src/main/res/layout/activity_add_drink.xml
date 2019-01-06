@@ -68,8 +68,8 @@
         android:imeOptions="actionDone"
         android:inputType="number" />
 
-    <EditText
-        android:id="@+id/alcoholName"
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteAlcoholName"
         android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
