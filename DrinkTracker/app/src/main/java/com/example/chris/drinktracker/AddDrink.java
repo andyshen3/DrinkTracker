@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -150,7 +149,7 @@ public class AddDrink extends AppCompatActivity {
         return (percentAlc * volume * alcoholQuantity);
     }
 
-    public double truncateBAC(double BAC){
+    public static double truncateBAC(double BAC){
         return Math.floor(BAC * 1000) / 1000;
     }
 }
